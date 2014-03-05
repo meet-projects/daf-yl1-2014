@@ -12,15 +12,19 @@ class Button(object):
 		self.button_sq = pygame.Surface([self.width, self.height])
 		self.screenBG = screenBG
 		self.screen = screen
+		self.textColor = (255,255,255)
+	def setButtonColor(self, color):
+		self.color = color
+	def setTextColor(self, color):
+		self.textColor = color
 	def draw(self):
 		self.button_sq.fill(self.color)
 		self.screen.blit(self.button_sq, self.button_rec)
 		
 		pygame.init()	
 		font=pygame.font.Font(None,25)
-		scoretext=font.render(self.text , 1,(255,255,255))
-		self.screen.blit(scoretext, (self.locationX + (self.width / 2) , self.locationY + (self.height / 2)))
-		
+		scoretext=font.render(self.text , 1, self.textColor)
+		self.screen.blit(scoretext, (self.locationX + (self.width / 2) , self.locationY + (self.height / 2)))		
 	def clear(self):
 		self.button_sq.fill(self.screenBG)
 		self.screen.blit(self.button_sq, self.button_rec)
