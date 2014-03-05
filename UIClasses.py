@@ -16,7 +16,7 @@ class Button(object):
 	def setButtonColor(self, color):
 		self.color = color
 	def setTextColor(self, color):
-		self.textColor = color
+		self.textColor = color 
 	def draw(self):
 		self.button_sq.fill(self.color)
 		self.screen.blit(self.button_sq, self.button_rec)
