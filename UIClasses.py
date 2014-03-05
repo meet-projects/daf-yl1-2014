@@ -61,7 +61,7 @@ if (__name__ == "__main__"):
 			sys.exit()
 		if ev.type == pygame.MOUSEBUTTONDOWN: 
 			x, y = ev.pos
-			if button.onClick(x,y):
+			if button.click(x,y):
 				print "(" + str(x) + ", " + str(y) + ")"
 		# do something with the click
 		pygame.display.flip()
