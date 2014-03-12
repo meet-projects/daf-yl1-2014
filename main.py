@@ -1,4 +1,4 @@
-import pygame, sys, UIClasses
+import pygame, sys, UIClasses, dafClasses
 
 #Clears all the UI objects that on the screen
 def clearScreen():			
@@ -41,6 +41,22 @@ def emotionsScreen():
 	label_Title = UIClasses.Label(main_screen, background_color, "Emotions:", 200, 100, 50, (25,0,51))	
 	label_Title.draw()
 	onScreen.append(label_Title)
+
+	angry=dafClasses.Emotion("50", "60", "Medium", (255,0,0), "Orange")
+	anxious=dafClasses.Emotion("75", "90", "Large", (0,0,255), "Cherry")
+	frustrated=dafClasses.Emotion("65", "60", "Medium", (76,0,153), "Lime")
+	annoyed=dafClasses.Emotion("89", "120", "Large", "Pink", "Fruit Punch")
+	isolated=dafClasses.Emotion("50", "45", "Medium", "Dark Red", "Raspberry")
+	disappointed=dafClasses.Emotion("100", "120", "Large", "Lavender", "Lemonade")
+	abandoned=dafClasses.Emotion("95", "90", "Large", "Yellow", "Green Tea")
+	hurt=dafClasses.Emotion("59", "60", "Medium", "Light Blue", "Pineapple")
+	sad=dafClasses.Emotion("102", "120", "Large", "Green", "Apple")
+	rejected=dafClasses.Emotion("76", "90", "Large", "Blue", "Pink Grapefruit")
+	worried=dafClasses.Emotion("95", "120", "Large", "Red", "Pear")
+	bored=dafClasses.Emotion("68", "90", "Medium", "Green", "Mango")
+	lonely=dafClasses.Emotion("64", "90", "Medium", "Orange", "Tropical Punch")
+	depressed=dafClasses.Emotion("78", "60", "Large", "Violet", "Grape")
+
 #Loads all the requierd buttons in the power ups screen
 def PUScreen():
 	global onScreen		
@@ -57,6 +73,29 @@ def PUScreen():
 	label_Title.draw()
 	onScreen.append(label_Title)
 
+	sleepy = dafClasses.Powerup("120", "150", "Large", (255,255,0), "RedBull")
+	lazy = dafClasses.Powerup("75", "60", "Medium", (0,0,255), "XL")
+	exhausted = dafClasses.Powerup("95", "120", "Large", (0,255,0), "Monster")
+	fatigued = dafClasses.Powerup("83", "75", "Medium", (76,0,153), "Blue")
+	weak = dafClasses.Powerup("105", "90", "Large", (255,0,0), "Sparks")
+
+	button_sleepy = UIClasses.Button(main_screen, background_color, 70, 150, 150 ,100, "sleepy", sleepy.color)
+	button_sleepy.setTextColor((0,0,0))
+	button_sleepy.draw()
+
+	button_lazy = UIClasses.Button(main_screen, background_color, 400, 150, 150 ,100, "lazy", lazy.color)
+	button_lazy.draw()
+
+	button_exhausted = UIClasses.Button(main_screen, background_color, 230, 270, 150 ,100, "exhausted", exhausted.color)
+	button_exhausted.setTextColor((44,69,169))
+	button_exhausted.draw()
+	
+	button_fatigued = UIClasses.Button(main_screen, background_color, 70, 390, 150 ,100, "fatigued", fatigued.color)
+	button_fatigued.setTextColor((255,255,0))
+	button_fatigued.draw()
+
+	button_weak = UIClasses.Button(main_screen, background_color, 400, 390, 150 ,100, "weak", weak.color)
+	button_weak.draw()
 #Initialize everythings before starting to work with the UI. MUST BE CALLED AT THE BEGGINIG OF THE PROGRAM
 def initialize():
 	global onScreen		
