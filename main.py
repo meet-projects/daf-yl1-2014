@@ -293,6 +293,7 @@ if __name__=="__main__":
 		if ev.type == pygame.MOUSEBUTTONDOWN:
 			x,y = ev.pos
 			if button_Emontions.visible and button_Emontions.click(x,y):
+				print "aseel"
 				clearScreen()
 				emotionsScreen()
 			if button_PU.visible and button_PU.click(x,y):
