@@ -76,76 +76,77 @@ def emotionsScreen():
 	button_anxious.setTextColor((0,0,0))
 	button_anxious.draw()
 	emotionButtons.append(button_anxious)
-	
+	onScreen.append(button_anxious)
 
 
 	button_frustrated = UIClasses.Button(main_screen, background_color, 230, 180, 130 ,80, "frustrated", frustrated.color)
 	button_frustrated.draw()
 	emotionButtons.append(button_frustrated)
-
+	onScreen.append(button_frustrated)
 
 	button_annoyed = UIClasses.Button(main_screen, background_color, 70, 250, 130 ,80, "annoyed", annoyed.color)
 	button_annoyed.draw()
 	emotionButtons.append(button_annoyed)
-
+	onScreen.append(button_annoyed)
 
 	button_isolated = UIClasses.Button(main_screen, background_color, 400, 250, 130 ,80, "isolated", isolated.color)
 	button_isolated.setTextColor((0,0,0))
 	button_isolated.draw()
 	emotionButtons.append(button_isolated)
-
+	onScreen.append(button_isolated)
 
 	button_disappointed = UIClasses.Button(main_screen, background_color, 230, 330, 130 ,80, "disappointed", disappointed.color)
 	button_disappointed.setTextColor((0,0,0))
 	button_disappointed.draw()
 	emotionButtons.append(button_disappointed)
-
+	onScreen.append(button_disappointed)
 
 	button_abandoned = UIClasses.Button(main_screen, background_color, 70, 400, 130 ,80, "abandoned", abandoned.color)
 	button_abandoned.setTextColor((0,0,0))
 	button_abandoned.draw()
 	emotionButtons.append(button_abandoned)
-
+	onScreen.append(button_abandoned)
 
 	button_hurt = UIClasses.Button(main_screen, background_color, 400, 400, 130 ,80, "hurt", hurt.color)
 	button_hurt.setTextColor((0,0,0))
 	button_hurt.draw()
 	emotionButtons.append(button_hurt)
-
+	onScreen.append(button_hurt)
 
 	button_sad = UIClasses.Button(main_screen, background_color, 230, 480, 130 ,80, "sad", sad.color)
 	button_sad.setTextColor((0,0,0))
 	button_sad.draw()
 	emotionButtons.append(button_sad)
-
+	onScreen.append(button_sad)
 
 	button_rejected = UIClasses.Button(main_screen, background_color, 70, 550, 130 ,80, "rejected", rejected.color)
 	button_rejected.setTextColor((0,0,0))
 	button_rejected.draw()
 	emotionButtons.append(button_rejected)
-
+	onScreen.append(button_rejected)
 
 	button_worried = UIClasses.Button(main_screen, background_color, 400, 550, 130 ,80, "worried", worried.color)
 	button_worried.setTextColor((0,0,0))
 	button_worried.draw()
 	emotionButtons.append(button_worried)
-
+	onScreen.append(button_worried)
 
 	button_bored = UIClasses.Button(main_screen, background_color, 230, 630, 130 ,80, "bored", bored.color)
 	button_bored.setTextColor((0,0,0))
 	button_bored.draw()
 	emotionButtons.append(button_bored)
-
+	onScreen.append(button_bored)
 
 	button_lonely = UIClasses.Button(main_screen, background_color, 70, 700, 130 ,80, "lonely", lonely.color)
 	button_lonely.setTextColor((0,0,0))
 	button_lonely.draw()
 	emotionButtons.append(button_lonely)
-
+	onScreen.append(button_lonely)
 
 	button_depressed = UIClasses.Button(main_screen, background_color, 400, 700, 130 ,80, "depressed", depressed.color)
 	button_depressed.draw()
 	emotionButtons.append(button_depressed)
+	onScreen.append(button_depressed)
 
 #Loads all the requierd buttons in the power ups screen
 def PUScreen():
