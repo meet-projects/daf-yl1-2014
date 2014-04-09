@@ -231,7 +231,6 @@ def cartScreen():
 	global onScreen		
 	global main_screen
 	global background_color
-
 	global button_back
 	global label_Title
 
@@ -241,6 +240,9 @@ def cartScreen():
 	label_Title = UIClasses.Label(main_screen, background_color, "Cart", 200, 100, 50, (25,0,51))	
 	label_Title.draw()
 	onScreen.append(label_Title)
+
+	button_Cart.draw()
+	onScreen.append(button_Cart)
 
 
 
