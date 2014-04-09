@@ -340,6 +340,10 @@ if __name__=="__main__":
 					counterLabel.text = str(newValue);
 					counterLabel.draw()
 			if currentScreen == "emotionsScreen":
-				for button in 
+				for button in emotionButtons:
+					if(button.click(x, y)):
+						clearScreen()
+						currentScreen = "viewProductScreen"
+						viewProductScreen(emotionsDict[button.text])
 				
 		pygame.display.flip()
