@@ -164,36 +164,34 @@ def PUScreen():
 
 	PUButtons = []
 
-	button_sleepy = UIClasses.Button(main_screen, background_color, 70, 150, 150 ,100, "sleepy", sleepy.color)
+	button_sleepy = UIClasses.Button(main_screen, background_color, 70, 150, 150 ,100, "sleepy", PUDict["sleepy"].color)
 	button_sleepy.setTextColor((0,0,0))
-	button_sleepy.draw()
 	onScreen.append(button_sleepy)
 	PUButtons.append(button_sleepy)
 
-	button_lazy = UIClasses.Button(main_screen, background_color, 400, 150, 150 ,100, "lazy", lazy.color)
-	button_lazy.draw()
+	button_lazy = UIClasses.Button(main_screen, background_color, 400, 150, 150 ,100, "lazy", PUDict["lazy"].color)
 	onScreen.append(button_lazy)
 	PUButtons.append(button_lazy)
 
 
-	button_exhausted = UIClasses.Button(main_screen, background_color, 230, 270, 150 ,100, "exhausted", exhausted.color)
+	button_exhausted = UIClasses.Button(main_screen, background_color, 230, 270, 150 ,100, "exhausted", PUDict["exhausted"].color)
 	button_exhausted.setTextColor((44,69,169))
-	button_exhausted.draw()
 	onScreen.append(button_exhausted)
 	PUButtons.append(button_exhausted)
 
 	
-	button_fatigued = UIClasses.Button(main_screen, background_color, 70, 390, 150 ,100, "fatigued", fatigued.color)
+	button_fatigued = UIClasses.Button(main_screen, background_color, 70, 390, 150 ,100, "fatigued", PUDict["fatigued"].color)
 	button_fatigued.setTextColor((255,255,0))
-	button_fatigued.draw()
 	onScreen.append(button_fatigued)
 	PUButtons.append(button_fatigued)
 
 
-	button_weak = UIClasses.Button(main_screen, background_color, 400, 390, 150 ,100, "weak", weak.color)
-	button_weak.draw()
+	button_weak = UIClasses.Button(main_screen, background_color, 400, 390, 150 ,100, "weak", PUDict["weak"].color)
 	onScreen.append(button_weak)
 	PUButtons.append(button_weak)
+
+	for button in PUButtons:
+		button.draw()
 
 
 def viewProductScreen():
