@@ -194,7 +194,7 @@ def PUScreen():
 		button.draw()
 
 
-def viewProductScreen():
+def viewProductScreen(product):
 	global label_Title
 	global main_screen
 	global button_plus
@@ -204,10 +204,9 @@ def viewProductScreen():
 	global counterLabel
 	
 	isAddToCartSlide = True
-	productBG = (255,0,0)
-	main_screen.fill(productBG)
+	main_screen.fill(product.color)
 
-	label_Title = UIClasses.Label(main_screen, background_color, "Product name", 75, 100, 35, (25,0,51))
+	label_Title = UIClasses.Label(main_screen, background_color, product.name, 75, 100, 35, (25,0,51))
 	label_Title.draw()
 	onScreen.append(label_Title)
 
