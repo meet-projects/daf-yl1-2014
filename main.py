@@ -53,20 +53,20 @@ def emotionsScreen():
 	label_Title.draw()
 	onScreen.append(label_Title)
 
-	emotionsDict["angry"] = dafClasses.Emotion("50", "60", "Medium", (102,255,255), "Orange")
-	emotionsDict["anxious"] =dafClasses.Emotion("75", "90", "Large", (230,230,250), "Cherry")
-	emotionsDict["frustrated"] =dafClasses.Emotion("65", "60", "Medium", (76,0,153), "Lime")
-	emotionsDict["annoyed"] =dafClasses.Emotion("89", "120", "Large", (220,20,60), "Fruit Punch")
-	emotionsDict["isolated"] =dafClasses.Emotion("50", "45", "Medium", (255, 102, 102), "Raspberry")
-	emotionsDict["disappointed"] =dafClasses.Emotion("100", "120", "Large", (255, 0, 255), "Lemonade")
-	emotionsDict["abandoned"] =dafClasses.Emotion("95", "90", "Large", (255, 255, 102), "Green Tea")
-	emotionsDict["hurt"] =dafClasses.Emotion("59", "60", "Medium", (255, 153, 51), "Pineapple")
-	emotionsDict["sad"] =dafClasses.Emotion("102", "120", "Large", (221,160,221), "Apple")
-	emotionsDict["rejected"] =dafClasses.Emotion("76", "90", "Large", (0, 153, 76), "Pink Grapefruit")
-	emotionsDict["worried"] =dafClasses.Emotion("95", "120", "Large", (160, 160, 160), "Pear")
-	emotionsDict["bored"] =dafClasses.Emotion("68", "90", "Medium", (0, 102, 204) , "Mango")
-	emotionsDict["lonely"] =dafClasses.Emotion("64", "90", "Medium", (51, 255, 153), "Tropical Punch")
-	emotionsDict["depressed"] =dafClasses.Emotion("78", "60", "Large", (153, 0, 76), "Grape")
+	emotionsDict["angry"] = dafClasses.Emotion("angry", 50, 60, "Medium", (102,255,255), "Orange")
+	emotionsDict["anxious"] =dafClasses.Emotion("anxious" ,75, 90, "Large", (230,230,250), "Cherry")
+	emotionsDict["frustrated"] =dafClasses.Emotion("frustrated", 65, 60, "Medium", (76,0,153), "Lime")
+	emotionsDict["annoyed"] =dafClasses.Emotion("annoyed", 89, 120, "Large", (220,20,60), "Fruit Punch")
+	emotionsDict["isolated"] =dafClasses.Emotion("isolated", 50, 45, "Medium", (255, 102, 102), "Raspberry")
+	emotionsDict["disappointed"] =dafClasses.Emotion("disappointed", 100, 120, "Large", (255, 0, 255), "Lemonade")
+	emotionsDict["abandoned"] =dafClasses.Emotion("abandoned", 95, 90, "Large", (255, 255, 102), "Green Tea")
+	emotionsDict["hurt"] =dafClasses.Emotion("hurt", 59, 60, "Medium", (255, 153, 51), "Pineapple")
+	emotionsDict["sad"] =dafClasses.Emotion("sad", 102, 120, "Large", (221,160,221), "Apple")
+	emotionsDict["rejected"] =dafClasses.Emotion("rejected", 76, 90, "Large", (0, 153, 76), "Pink Grapefruit")
+	emotionsDict["worried"] =dafClasses.Emotion("worried", 95, 120, "Large", (160, 160, 160), "Pear")
+	emotionsDict["bored"] =dafClasses.Emotion("bored", 68, 90, "Medium", (0, 102, 204) , "Mango")
+	emotionsDict["lonely"] =dafClasses.Emotion("lonely", 64, 90, "Medium", (51, 255, 153), "Tropical Punch")
+	emotionsDict["depressed"] =dafClasses.Emotion("depressed", 78, 60, "Large", (153, 0, 76), "Grape")
 
 	button_angry = UIClasses.Button(main_screen, background_color, 70, 100, 130 ,80, "angry", emotionsDict["angry"].color)
 	button_angry.setTextColor((0,0,0))
@@ -158,11 +158,11 @@ def PUScreen():
 	label_Title.draw()
 	onScreen.append(label_Title)
 
-	PUDict["sleepy"] = dafClasses.Powerup("120", "150", "Large", (255,255,0), "RedBull")
-	PUDict["lazy"] = dafClasses.Powerup("75", "60", "Medium", (0,0,255), "XL")
-	PUDict["exhausted"] = dafClasses.Powerup("95", "120", "Large", (0,255,0), "Monster")
-	PUDict["fatigued"] = dafClasses.Powerup("83", "75", "Medium", (76,0,153), "Blue")
-	PUDict["weak"] = dafClasses.Powerup("105", "90", "Large", (255,0,0), "Sparks")
+	PUDict["sleepy"] = dafClasses.Powerup("sleepy", 120, 150, "Large", (255,255,0), "RedBull")
+	PUDict["lazy"] = dafClasses.Powerup("lazy", 75, 60, "Medium", (0,0,255), "XL")
+	PUDict["exhausted"] = dafClasses.Powerup("exhausted", 95, 120, "Large", (0,255,0), "Monster")
+	PUDict["fatigued"] = dafClasses.Powerup("fatigued", 83, 75, "Medium", (76,0,153), "Blue")
+	PUDict["weak"] = dafClasses.Powerup("weak", 105, 90, "Large", (255,0,0), "Sparks")
 
 	button_sleepy = UIClasses.Button(main_screen, background_color, 70, 150, 150 ,100, "sleepy", PUDict["sleepy"].color)
 	button_sleepy.setTextColor((0,0,0))
@@ -225,7 +225,25 @@ def viewProductScreen(product):
 
 	counterLabel.draw()
 	onScreen.append(counterLabel)
-		
+	
+
+def cartScreen():
+	global onScreen		
+	global main_screen
+	global background_color
+
+	global button_back
+	global label_Title
+
+	button_back.draw()
+	onScreen.append(button_back)
+
+	label_Title = UIClasses.Label(main_screen, background_color, "Cart", 200, 100, 50, (25,0,51))	
+	label_Title.draw()
+	onScreen.append(label_Title)
+
+
+
 	
 #Initialize everythings before starting to work with the UI. MUST BE CALLED AT THE BEGGINIG OF THE PROGRAM
 def initialize():
@@ -291,7 +309,6 @@ if __name__=="__main__":
 		if ev.type == pygame.MOUSEBUTTONDOWN:
 			x,y = ev.pos
 			if button_Emontions.visible and button_Emontions.click(x,y):
-				print "aseel"
 				clearScreen()
 				currentScreen = "emotionsScreen"
 				emotionsScreen()
