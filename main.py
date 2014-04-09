@@ -35,12 +35,15 @@ def mainScreen():
 #Loads all the requierd buttons in the emotions screen
 def emotionsScreen():
 	global emotionsDict
+	global emotionButtons
+
 	global onScreen		
 	global main_screen
 	global background_color
 		
 	global label_Title
 	global button_back
+	
 		
 	button_back.draw()
 	onScreen.append(button_back)
@@ -64,8 +67,6 @@ def emotionsScreen():
 	emotionsDict["bored"] =dafClasses.Emotion("68", "90", "Medium", (0, 102, 204) , "Mango")
 	emotionsDict["lonely"] =dafClasses.Emotion("64", "90", "Medium", (51, 255, 153), "Tropical Punch")
 	emotionsDict["depressed"] =dafClasses.Emotion("78", "60", "Large", (153, 0, 76), "Grape")
-
-	emotionButtons = []
 
 	button_angry = UIClasses.Button(main_screen, background_color, 70, 100, 130 ,80, "angry", emotionsDict["angry"].color)
 	button_angry.setTextColor((0,0,0))
@@ -148,6 +149,7 @@ def PUScreen():
 	global button_back
 
 	global PUDict
+	global PUButtons
 	
 	button_back.draw()
 	onScreen.append(button_back)
@@ -161,8 +163,6 @@ def PUScreen():
 	PUDict["exhausted"] = dafClasses.Powerup("95", "120", "Large", (0,255,0), "Monster")
 	PUDict["fatigued"] = dafClasses.Powerup("83", "75", "Medium", (76,0,153), "Blue")
 	PUDict["weak"] = dafClasses.Powerup("105", "90", "Large", (255,0,0), "Sparks")
-
-	PUButtons = []
 
 	button_sleepy = UIClasses.Button(main_screen, background_color, 70, 150, 150 ,100, "sleepy", PUDict["sleepy"].color)
 	button_sleepy.setTextColor((0,0,0))
@@ -200,10 +200,10 @@ def viewProductScreen(product):
 	global button_plus
 	global button_minus	
 	global button_addToCart
-	global isAddToCartSlide
+	global currentScreen
 	global counterLabel
 	
-	isAddToCartSlide = True
+	currentScreen = "viewProductScreen"
 	main_screen.fill(product.color)
 
 	label_Title = UIClasses.Label(main_screen, background_color, product.name, 75, 100, 35, (25,0,51))
@@ -236,7 +236,9 @@ def initialize():
 	global emotionsDict
 	global PUDict
 	global cart
-	global isAddToCartSlide
+	global currentScreen
+	global PUButtons
+	global 	emotionButtons
 
 	global label_Title
 	global button_Emontions
@@ -259,7 +261,9 @@ def initialize():
 	emotionsDict = {}
 	PUDict = {}
 	cart = []
-	isAddToCartSlide = False
+	currentScreen = "main"
+	PUButtons = []
+	emotionButtons = []
 	
 	label_Title = UIClasses.Label(main_screen, background_color, "What would you like to purchase today?", 75, 100, 35, (25,0,51))	
 	button_Emontions = UIClasses.Button(main_screen, background_color, 50, 200, 500 ,160, "Emotions", (25,0,51))
@@ -289,20 +293,25 @@ if __name__=="__main__":
 			if button_Emontions.visible and button_Emontions.click(x,y):
 				print "aseel"
 				clearScreen()
+				currentScreen = "emotionsScreen"
 				emotionsScreen()
+
 			if button_PU.visible and button_PU.click(x,y):
 				clearScreen()
+				currentScreen = "PUScreen"
 				PUScreen()
+
 			if button_back.visible and button_back.click(x, y):
-				if(isAddToCartSlide):
+				if(currentScreen == "viewProductScreen"):
 					main_screen.fill(background_color)
 					counterLabel.text = "0";
-					counterLabel.draw()
-					isAddToCartSlide = False					
+					counterLabel.draw()					
 				clearScreen()
+				currentScreen = "main"
 				mainScreen()
 			if button_Cart.visible and button_Cart.click(x, y):
 				clearScreen()
+				currentScreen = "viewProductScreen"
 				viewProductScreen()
 			if button_plus.visible and button_plus.click(x, y):
 				newValue = int(counterLabel.text) + 1
@@ -313,5 +322,7 @@ if __name__=="__main__":
 				if newValue >= 0:
 					counterLabel.text = str(newValue);
 					counterLabel.draw()
+			if currentScreen == "emotionsScreen":
+				for button in 
 				
 		pygame.display.flip()
