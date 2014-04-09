@@ -16,6 +16,7 @@ def mainScreen():
 	global label_Title
 	global button_Emontions
 	global button_PU
+	global button_Cart
 	
 	label_Title = UIClasses.Label(main_screen, background_color, "What would you like to purchase today?", 75, 100, 35, (25,0,51))	
 	label_Title.draw()
@@ -26,6 +27,11 @@ def mainScreen():
 
 	button_PU.draw()
 	onScreen.append(button_PU)
+
+	button_Cart.draw()
+	onScreen.append(button_Cart)
+	
+	
 #Loads all the requierd buttons in the emotions screen
 def emotionsScreen():
 	global onScreen		
@@ -82,20 +88,59 @@ def PUScreen():
 	button_sleepy = UIClasses.Button(main_screen, background_color, 70, 150, 150 ,100, "sleepy", sleepy.color)
 	button_sleepy.setTextColor((0,0,0))
 	button_sleepy.draw()
+	onScreen.append(button_sleepy)
 
 	button_lazy = UIClasses.Button(main_screen, background_color, 400, 150, 150 ,100, "lazy", lazy.color)
 	button_lazy.draw()
+	onScreen.append(button_lazy)
 
 	button_exhausted = UIClasses.Button(main_screen, background_color, 230, 270, 150 ,100, "exhausted", exhausted.color)
 	button_exhausted.setTextColor((44,69,169))
 	button_exhausted.draw()
+	onScreen.append(button_exhausted)
 	
 	button_fatigued = UIClasses.Button(main_screen, background_color, 70, 390, 150 ,100, "fatigued", fatigued.color)
 	button_fatigued.setTextColor((255,255,0))
 	button_fatigued.draw()
+	onScreen.append(button_fatigued)
 
 	button_weak = UIClasses.Button(main_screen, background_color, 400, 390, 150 ,100, "weak", weak.color)
 	button_weak.draw()
+	onScreen.append(button_weak)
+def viewProductScreen():
+	global label_Title
+	global main_screen
+	global button_plus
+	global button_minus	
+	global button_addToCart
+	global isAddToCartSlide
+	global counterLabel
+	
+	isAddToCartSlide = True
+	productBG = (255,0,0)
+	main_screen.fill(productBG)
+
+	label_Title = UIClasses.Label(main_screen, background_color, "Product name", 75, 100, 35, (25,0,51))
+	label_Title.draw()
+	onScreen.append(label_Title)
+
+	button_back.draw()
+	onScreen.append(button_back)
+	
+	
+	button_plus.draw()
+	onScreen.append(button_plus)
+	
+	button_minus.draw()
+	onScreen.append(button_minus)
+
+	button_addToCart.draw()
+	onScreen.append(button_addToCart)
+
+	counterLabel.draw()
+	onScreen.append(counterLabel)
+		
+	
 #Initialize everythings before starting to work with the UI. MUST BE CALLED AT THE BEGGINIG OF THE PROGRAM
 def initialize():
 	global onScreen		
@@ -106,6 +151,13 @@ def initialize():
 	global button_Emontions
 	global button_PU
 	global button_back
+	global button_Cart
+
+	global button_plus
+	global button_minus
+	global button_addToCart
+	global isAddToCartSlide
+	global counterLabel
 
 	pygame.init()
 	main_screen = pygame.display.set_mode((600, 800))
@@ -115,12 +167,24 @@ def initialize():
 	background_color = (171,124,240)
 	main_screen.fill(background_color)
 	onScreen = []
+
+	isAddToCartSlide = False
 	
 	label_Title = UIClasses.Label(main_screen, background_color, "What would you like to purchase today?", 75, 100, 35, (25,0,51))	
-	button_Emontions = UIClasses.Button(main_screen, background_color, 50, 200, 500 ,200, "Emotions", (25,0,51))
-	button_PU = UIClasses.Button(main_screen, background_color, 50, 500, 500 ,200, "Power Ups", (25,0,51))
+	button_Emontions = UIClasses.Button(main_screen, background_color, 50, 200, 500 ,160, "Emotions", (25,0,51))
+	button_Emontions.setTextSize(40)
+	button_PU = UIClasses.Button(main_screen, background_color, 50, 450, 500 ,160, "Power Ups", (25,0,51))
+	button_PU.setTextSize(40)
 	button_back = UIClasses.Button(main_screen, background_color, 20, 20, 100 ,66 , "Back", (25,0,51))
+	button_Cart = UIClasses.Button(main_screen, background_color, 480, 650, 100 ,66 , "Cart", (35,0,51))
 
+	button_plus = UIClasses.Button(main_screen, background_color, 160, 200, 80 ,80 , "+", (35,0,51))
+	button_minus = UIClasses.Button(main_screen, background_color, 360, 200, 80 ,80 , "-", (35,0,51))
+
+	counterLabel = UIClasses.Button(main_screen, background_color, 260, 200, 80 ,80 , "0", (255,75,255)) ## was made as button for the background. click functions is not implemented!!!
+
+	button_addToCart = UIClasses.Button(main_screen, background_color, 100, 320, 400 ,200 , "Add to cart!", (35,0,51))
+	button_addToCart.setTextSize(40)
 if __name__=="__main__":
 	initialize()
 	mainScreen()
@@ -138,6 +202,24 @@ if __name__=="__main__":
 				clearScreen()
 				PUScreen()
 			if button_back.visible and button_back.click(x, y):
+				if(isAddToCartSlide):
+					main_screen.fill(background_color)
+					counterLabel.text = "0";
+					counterLabel.draw()
+					isAddToCartSlide = False					
 				clearScreen()
 				mainScreen()
+			if button_Cart.visible and button_Cart.click(x, y):
+				clearScreen()
+				viewProductScreen()
+			if button_plus.visible and button_plus.click(x, y):
+				newValue = int(counterLabel.text) + 1
+				counterLabel.text = str(newValue);
+				counterLabel.draw()
+			if button_minus.visible and button_minus.click(x, y):
+				newValue = int(counterLabel.text) - 1
+				if newValue >= 0:
+					counterLabel.text = str(newValue);
+					counterLabel.draw()
+				
 		pygame.display.flip()
