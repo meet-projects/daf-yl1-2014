@@ -227,11 +227,12 @@ def cartScreen():
 	global background_color
 	global button_back
 	global label_Title
+	global button_buy
 
 	button_back.draw()
 	onScreen.append(button_back)
 
-	label_Title = UIClasses.Label(main_screen, background_color, "Cart", 300, 70, 50, (25,0,51))	
+	label_Title = UIClasses.Label(main_screen, background_color, "Cart", 250, 70, 85, (25,0,51))	
 	label_Title.draw()
 	onScreen.append(label_Title)
 
@@ -243,9 +244,9 @@ def cartScreen():
 	product_quantity.draw()
 	onScreen.append(product_quantity)
 
-	label_Ty = UIClasses.Label(main_screen, background_color, "THANK YOU! :D", 180, 710, 50, (255,255,102))	
-	label_Ty.draw()
-	onScreen.append(label_Ty)
+	button_buy = UIClasses.Button(main_screen, background_color, 150, 700, 300 ,100 , "Buy", (35,0,51))	
+	button_buy.draw()
+	onScreen.append(button_buy)
 
 
 	product_price = UIClasses.Label(main_screen, background_color, "Price", 460, 180, 35, (25,0,51))	
@@ -271,11 +272,34 @@ def cartScreen():
 		totalCost = totalCost + int(cartProduct.product.price) * int(cartProduct.quantity)
 		productCounter = productCounter + 1
 
-	label_totalCost = UIClasses.Label(main_screen, background_color, "Total Cost: " + str(totalCost) , 350, 650, 35, (25,0,51))	
+	label_totalCost = UIClasses.Label(main_screen, background_color, "Total Cost: " + str(totalCost) + " NIS" , 350, 650, 35, (25,0,51))	
 	label_totalCost.draw()
 	onScreen.append(label_totalCost)
 
+def thankYouScreen():
+	label_thankYou = UIClasses.Label(main_screen, background_color, "Thank you!", 150, 180 , 80, (255,255,102))
+	label_thankYou.draw()
+	onScreen.append(label_thankYou)
 
+	label_leen = UIClasses.Label(main_screen, background_color, "Leen", 150, 240 , 40, (25,0,51))
+	label_leen.draw()
+	onScreen.append(label_leen)
+
+	label_aseel = UIClasses.Label(main_screen, background_color, "Aseel", 150, 280 , 40, (25,0,51))
+	label_aseel.draw()
+	onScreen.append(label_aseel)
+
+	label_ophir = UIClasses.Label(main_screen, background_color, "Ophir", 150, 320 , 40, (25,0,51))
+	label_ophir.draw()
+	onScreen.append(label_ophir)
+
+	label_mouhammed = UIClasses.Label(main_screen, background_color, "Mouhammed", 150, 360 , 40, (25,0,51))
+	label_mouhammed.draw()
+	onScreen.append(label_mouhammed)
+
+	label_itay = UIClasses.Label(main_screen, background_color, "Itay", 150, 400 , 40, (25,0,51))
+	label_itay.draw()
+	onScreen.append(label_itay)
 
 
 	
@@ -344,13 +368,13 @@ if __name__=="__main__":
 			x,y = ev.pos
 			if button_Emontions.visible and button_Emontions.click(x,y):
 				clearScreen()
-				currentScreen = "emotionsScreen"
 				emotionsScreen()
+				currentScreen = "emotionsScreen"
 
 			if button_PU.visible and button_PU.click(x,y):
 				clearScreen()
-				currentScreen = "PUScreen"
 				PUScreen()
+				currentScreen = "PUScreen"
 
 			if button_back.visible and button_back.click(x, y):
 				if(currentScreen == "viewProductScreen"):
@@ -361,15 +385,15 @@ if __name__=="__main__":
 				mainScreen()
 			if button_Cart.visible and button_Cart.click(x, y):
 				clearScreen()
-				currentScreen = "cartScreen"
 				cartScreen()
+				currentScreen = "cartScreen"
 			if button_addToCart.visible and button_addToCart.click(x, y):
 				if(counterLabel.text != "0"):
 					cart.append(dafClasses.cartProduct(currentProduct, int(counterLabel.text)))
 					clearScreen()
 					main_screen.fill(background_color)
-					currentScreen = "cartScreen"
 					cartScreen()
+					currentScreen = "cartScreen"
 			if button_plus.visible and button_plus.click(x, y):
 				newValue = int(counterLabel.text) + 1
 				counterLabel.text = str(newValue);
@@ -394,5 +418,9 @@ if __name__=="__main__":
 						currentScreen = "viewProductScreen"
 						counterLabel.text = "0"
 						viewProductScreen(PUDict[button.text])
+			if currentScreen == "cartScreen" and button_buy.click(x, y):
+				clearScreen()
+				currentScreen = "thankYouScreen"
+				thankYouScreen()
 				
 		pygame.display.flip()
