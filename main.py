@@ -149,35 +149,35 @@ def PUScreen():
 	label_Title.draw()
 	onScreen.append(label_Title)
 
-	PUDict["sleepy"] = dafClasses.Powerup("sleepy", 120, 150, "Large", (255,255,0), "RedBull")
-	PUDict["lazy"] = dafClasses.Powerup("lazy", 75, 60, "Medium", (0,0,255), "XL")
-	PUDict["exhausted"] = dafClasses.Powerup("exhausted", 95, 120, "Large", (0,255,0), "Monster")
-	PUDict["fatigued"] = dafClasses.Powerup("fatigued", 83, 75, "Medium", (76,0,153), "Blue")
-	PUDict["weak"] = dafClasses.Powerup("weak", 105, 90, "Large", (255,0,0), "Sparks")
+	PUDict["awake"] = dafClasses.Powerup("awake", 120, 150, "Large", (255,255,0), "RedBull")
+	PUDict["diligent"] = dafClasses.Powerup("diligent", 75, 60, "Medium", (0,0,255), "XL")
+	PUDict["energetic"] = dafClasses.Powerup("energetic", 95, 120, "Large", (0,255,0), "Monster")
+	PUDict["concentrated"] = dafClasses.Powerup("concentrated", 83, 75, "Medium", (76,0,153), "Blue")
+	PUDict["strong"] = dafClasses.Powerup("strong", 105, 90, "Large", (255,0,0), "Sparks")
 
-	button_sleepy = UIClasses.Button(main_screen, background_color, 70, 150, 150 ,100, "awake", PUDict["sleepy"].color)
+	button_sleepy = UIClasses.Button(main_screen, background_color, 60, 150, 150 ,100, "awake", PUDict["awake"].color)
 	button_sleepy.setTextColor((0,0,0))
 	onScreen.append(button_sleepy)
 	PUButtons.append(button_sleepy)
 
-	button_lazy = UIClasses.Button(main_screen, background_color, 400, 150, 150 ,100, "diligent", PUDict["lazy"].color)
+	button_lazy = UIClasses.Button(main_screen, background_color, 400, 150, 150 ,100, "diligent", PUDict["diligent"].color)
 	onScreen.append(button_lazy)
 	PUButtons.append(button_lazy)
 
 
-	button_exhausted = UIClasses.Button(main_screen, background_color, 230, 270, 150 ,100, "energetic", PUDict["exhausted"].color)
+	button_exhausted = UIClasses.Button(main_screen, background_color, 230, 270, 150 ,100, "energetic", PUDict["energetic"].color)
 	button_exhausted.setTextColor((0,0,0))
 	onScreen.append(button_exhausted)
 	PUButtons.append(button_exhausted)
 
 	
-	button_fatigued = UIClasses.Button(main_screen, background_color, 70, 390, 150 ,100, "concentrated", PUDict["fatigued"].color)
+	button_fatigued = UIClasses.Button(main_screen, background_color, 60, 390, 150 ,100, "concentrated", PUDict["concentrated"].color)
 	button_fatigued.setTextColor((255,255,255))
 	onScreen.append(button_fatigued)
 	PUButtons.append(button_fatigued)
 
 
-	button_weak = UIClasses.Button(main_screen, background_color, 400, 390, 150 ,100, "strong", PUDict["weak"].color)
+	button_weak = UIClasses.Button(main_screen, background_color, 400, 390, 150 ,100, "strong", PUDict["strong"].color)
 	onScreen.append(button_weak)
 	PUButtons.append(button_weak)
 
