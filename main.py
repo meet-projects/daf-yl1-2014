@@ -240,7 +240,7 @@ def cartScreen():
 	button_back.draw()
 	onScreen.append(button_back)
 
-	label_Title = UIClasses.Label(main_screen, background_color, "Cart", 200, 100, 50, (25,0,51))	
+	label_Title = UIClasses.Label(main_screen, background_color, "Cart", 300, 70, 50, (25,0,51))	
 	label_Title.draw()
 	onScreen.append(label_Title)
 
@@ -252,22 +252,37 @@ def cartScreen():
 	product_quantity.draw()
 	onScreen.append(product_quantity)
 
+	label_Ty = UIClasses.Label(main_screen, background_color, "THANK YOU! :D", 180, 710, 50, (255,255,102))	
+	label_Ty.draw()
+	onScreen.append(label_Ty)
+
+
 	product_price = UIClasses.Label(main_screen, background_color, "Price", 460, 180, 35, (25,0,51))	
 	product_price.draw()
 	onScreen.append(product_price)
 
+	productCounter = 1;
+	totalCost = 0;
+
 	for cartProduct in cart:
-		product_name = UIClasses.Label(main_screen, background_color, cartProduct.product.name, 85, 180, 35, (25,0,51))	
+		product_name = UIClasses.Label(main_screen, background_color, str(cartProduct.product.name), 85, 180 + (40 * productCounter), 35, (25,0,51))	
 		product_name.draw()
 		onScreen.append(product_name)
 
-		product_quantity = UIClasses.Label(main_screen, background_color, cartProduct.quantity, 300, 180, 35, (25,0,51))	
+		product_quantity = UIClasses.Label(main_screen, background_color, str(cartProduct.quantity), 300, 180 + (40 * productCounter), 35 , (25,0,51))	
 		product_quantity.draw()
 		onScreen.append(product_quantity)
 
-		product_price = UIClasses.Label(main_screen, background_color, int(cartProduct.product.price) * int(cartProduct.quantity), 460, 180, 35, (25,0,51))
+		product_price = UIClasses.Label(main_screen, background_color, str(int(cartProduct.product.price) * int(cartProduct.quantity)) + " NIS", 460, 180 + (40 * productCounter), 35, (25,0,51))
 		product_price.draw()
+		onScreen.append(product_price)
 
+		totalCost = totalCost + int(cartProduct.product.price) * int(cartProduct.quantity)
+		productCounter = productCounter + 1
+
+	label_totalCost = UIClasses.Label(main_screen, background_color, "Total Cost: " + str(totalCost) , 350, 650, 35, (25,0,51))	
+	label_totalCost.draw()
+	onScreen.append(label_totalCost)
 
 
 
@@ -358,11 +373,12 @@ if __name__=="__main__":
 				currentScreen = "cartScreen"
 				cartScreen()
 			if button_addToCart.visible and button_addToCart.click(x, y):
-				cart.append(dafClasses.cartProduct(currentProduct, int(counterLabel.text)))
-				clearScreen()
-				main_screen.fill(background_color)
-				currentScreen = "cartScreen"
-				cartScreen()
+				if(counterLabel.text != "0"):
+					cart.append(dafClasses.cartProduct(currentProduct, int(counterLabel.text)))
+					clearScreen()
+					main_screen.fill(background_color)
+					currentScreen = "cartScreen"
+					cartScreen()
 			if button_plus.visible and button_plus.click(x, y):
 				newValue = int(counterLabel.text) + 1
 				counterLabel.text = str(newValue);
