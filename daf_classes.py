@@ -1,18 +1,19 @@
 class product(object):
-	def __init__(self,name, price ,duration, bottle_size, color):
+	def __init__(self, price ,duration, bottle_size, name, color):
 		self.price = price
+		self.name = name
 		self.duration = duration
 		self.bottle_size = bottle_size
 		self.color= color
 
 class emotion(product):
-	def __init__(self, price, duration, bottle_size, color, flavour):
-		super(emotion, self).__init__(name, price, duration, bottle_size, color)
+	def __init__(self, price, duration, bottle_size, name, color, flavour):
+		super(emotion, self).__init__(price, duration, bottle_size, name, color)
  		self.flavour = flavour
 
 class powerup(product):
-	def __init__(self, price, duration, bottle_size , color, brand ):
-		super(powerup, self).__init__(name, price, duration, bottle_size,color )
+	def __init__(self, price, duration, bottle_size, name, color, brand ):
+		super(powerup, self).__init__(price, duration, bottle_size, name,color )
  		self.brand = brand
 if(__name__ == "__main__"):
 	angry=("50", "60", "Medium", "Red", "Orange")
